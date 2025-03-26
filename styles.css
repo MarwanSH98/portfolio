@@ -185,7 +185,6 @@ body {
   }
   
   .dark-toggle {
-    margin-left: auto;
     padding: 0.5rem 1rem;
     background-color: transparent;
     border: 1px solid #fff;
@@ -193,7 +192,9 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 1rem;
   }
+  
   
   .dark-toggle:hover {
     background-color: rgba(255, 255, 255, 0.1);
@@ -240,6 +241,25 @@ body {
   
     footer {
       font-size: 0.9rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .dark-toggle {
+      width: 100%;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      padding: 0.6rem;
+    }
+  
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    nav li {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 0.5rem;
     }
   }
   
