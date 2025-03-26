@@ -20,10 +20,14 @@ body {
   }
   
   nav ul {
+    flex-wrap: wrap;
     list-style: none;
     display: flex;
     gap: 1rem;
+    justify-content: center;
   }
+  
+ 
   
   nav a {
     color: white;
@@ -114,6 +118,11 @@ body {
     background-color: #005dc1;
   }
   .profilbild {
+
+
+    width: 40vw;
+    max-width: 150px;
+    height: auto;
     width: 150px; /* oder 200px, je nach Wunsch */
     height: 150px;
     object-fit: cover;
@@ -198,5 +207,39 @@ body {
     background-color: #222;
     color: white;
     margin-top: 2rem;
+  }
+  @media (max-width: 600px) {
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  
+    .dark-toggle {
+      margin-top: 1rem;
+    }
+  
+    .profilbild {
+      width: 50vw;
+      max-width: 130px;
+    }
+  
+    section,
+    #hero,
+    form {
+      padding: 1.5rem 1rem;
+    }
+  
+    h1, h2 {
+      font-size: 1.4rem;
+    }
+  
+    p, blockquote {
+      font-size: 1rem;
+    }
+  
+    footer {
+      font-size: 0.9rem;
+    }
   }
   
