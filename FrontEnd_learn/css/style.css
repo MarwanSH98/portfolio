@@ -1,0 +1,565 @@
+:root {
+  --primary: #4361ee;
+  --secondary: #3a0ca3;
+  --accent: #f72585;
+  --dark: #1a1a2e;
+  --light: #f8f9fa;
+  --gradient: linear-gradient(135deg, #7209b7 0%, #4361ee 100%);
+  --glass: rgba(255, 255, 255, 0.15);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --border-radius: 16px;
+}
+
+/* ===== BASE STYLES ===== */
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.7;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* ===== GLASSMORPHISM HEADER ===== */
+.header {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.header ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  margin: 0;
+  list-style: none;
+}
+
+.header li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header li a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* ===== HERO SECTION ===== */
+.home {
+  text-align: center;
+  padding: 5rem 1rem;
+  color: #fff;
+  animation: fadeIn 1.2s ease-in-out;
+  background-image: url("/img/natur.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.home::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(var(--accent), transparent 70%);
+  top: 20%;
+  left: 10%;
+  filter: blur(60px);
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards 0.5s,
+    float 15s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.welcome {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 800;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  animation: textReveal 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards,
+    textGlow 3s ease-in-out infinite alternate,
+    subtleBounce 8s ease-in-out infinite;
+  background: linear-gradient(90deg, #fff, #e0e0e0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 0.4;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(50px, -30px);
+  }
+  50% {
+    transform: translate(20px, 40px);
+  }
+  75% {
+    transform: translate(-40px, 20px);
+  }
+}
+
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3),
+      0 0 20px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 40px rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes subtleBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Profilbild */
+#hero {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.profilbild {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  animation: popIn 5s ease;
+}
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.überschrift {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  font-family: monospace;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+  opacity: 0;
+  animation: textGlow 2s ease-in-out infinite alternate,
+    slideFadeIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.3s;
+}
+
+.überschrift span {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.überschrift span::before {
+  content: attr(data-text);
+  position: absolute;
+  width: 0;
+  height: 100%;
+  color: var(--accent);
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typeWriter 1.5s steps(20) forwards 0.8s,
+    blinkCursor 0.75s step-end infinite 0.8s;
+}
+
+.überschrift span::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--gradient);
+  animation: underlineExpand 1s ease-out forwards 1.8s;
+}
+/* Styling für das Button-Container */
+.button {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Stil für die Buttons */
+.button button {
+  background: var(--gradient);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 1s ease;
+  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
+}
+
+/* Hover-Effekt für die Buttons */
+.button button:hover {
+  background: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(67, 97, 238, 0.3);
+}
+
+/* Responsive Design für Buttons */
+@media (max-width: 768px) {
+  .button {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .button button {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typeWriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blinkCursor {
+  from,
+  to {
+    border-right: 2px solid transparent;
+  }
+  50% {
+    border-right: 2px solid var(--accent);
+  }
+}
+
+@keyframes underlineExpand {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 5px rgba(67, 238, 158, 0.3);
+  }
+  to {
+    text-shadow: 0 0 15px rgba(121, 238, 67, 0.6);
+  }
+}
+.skills-grid,
+.language-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  padding: 1rem 0;
+}
+
+.skill-card,
+.lang-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover,
+.lang-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card i {
+  font-size: 2.5rem;
+  color: #ff5722;
+  margin-bottom: 0.5rem;
+}
+
+.skill-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.progress-bar {
+  background: #e0e0e0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.progress-bar div {
+  background: linear-gradient(to right, #0d6efd, #6610f2);
+  height: 12px;
+  border-radius: 999px;
+  text-align: right;
+  color: white;
+  font-size: 0.75rem;
+  line-height: 12px;
+  padding-right: 8px;
+}
+
+.language-section h2,
+.skills-section h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #0d6efd;
+}
+
+.lang-card {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Sprachen */
+.sprachen {
+  box-shadow: 1px 1px 10px 5px #ff00a194;
+  width: 25%;
+  max-width: 250px;
+  padding: 2rem;
+  background-color: #e9ecef;
+  border-radius: 12px;
+  margin: 0.5rem;
+  animation: fadeIn 1s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sprachen:hover {
+  transform: translateY(-5px);
+  box-shadow: 2px 2px 20px 8px #ff00a1cc;
+}
+
+.sprachen ul {
+  list-style: none;
+  padding: 1rem;
+}
+
+.sprachen li {
+  padding: 0.5rem 0;
+}
+
+/* Kontakt */
+.kontakt {
+  box-shadow: 1px 1px 10px 5px #ff00a194;
+  background-color: #e9ecef;
+  padding: 2rem;
+
+  margin: 70px 0 0 32px;
+  width: 25%;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kontakt:hover {
+  transform: translateY(-5px);
+  box-shadow: 2px 2px 20px 8px #ff00a1cc;
+}
+
+/* Icon */
+.kontakt i {
+  color: #0d6efd;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Link */
+.kontakt a {
+  color: #212529;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Hover Effekte für Icon und Link */
+.kontakt a:hover {
+  color: #0d6efd;
+}
+
+.kontakt a:hover i {
+  color: #0d6efd;
+  transform: translateX(4px);
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== CONTACT SECTION ===== */
+.kontaktformular {
+  background: white;
+  padding: 4rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  max-width: 800px;
+  margin: 4rem auto;
+}
+
+.kontaktformular input,
+.kontaktformular textarea {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.kontaktformular input:focus,
+.kontaktformular textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+.kontaktformular button {
+  background: var(--gradient);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.kontaktformular button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+}
+.ds {
+  text-align: center;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--dark);
+  color: white;
+  padding: 3rem;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  margin: 0 1rem;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+footer a:hover {
+  color: var(--accent);
+  transform: translateY(-5px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .header ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  #hero {
+    grid-template-columns: 1fr;
+    padding: 4rem 2rem;
+    gap: 2rem;
+  }
+
+  .profilbild {
+    justify-self: center;
+    max-width: 300px;
+  }
+
+  .html-skills,
+  .kontaktformular {
+    padding: 2rem;
+    margin: 2rem 1rem;
+  }
+}

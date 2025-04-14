@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <!-- utf-8 um umlaute und sonderzeichnen anzuzeigen-->
+    <meta charset="UTF-8" />
+    <title>Portfolio von Marwan Sabah</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <meta
+      name="description"
+      content="Mein Portfolio als angehender Frontend-Entwickler. Hier findest du meine Projekte und mehr über mich."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <ul>
+        <li><a href="#home"> Home </a></li>
+        <li><a href="#about">Über mich </a></li>
+        <li><a href="#projects">Projekte </a></li>
+        <li><a href="#contact">Kontakt </a></li>
+      </ul>
+    </div>
+
+    <section class="home">
+      <h1 class="welcome">Willkommen auf meiner Seite</h1>
+    </section>
+
+    <section id="hero">
+      <img src="img/marwan.jpeg" alt="Mein Bild" class="profilbild" />
+    </section>
+
+    <section id="about">
+      <h1 class="überschrift">
+        Hallo, ich bin
+        <span data-text="Marwan Sabah">Marwan Sabah</span> angehender
+        Frontend-Entwickler.
+      </h1>
+    </section>
+
+    <div class="button">
+      <a href="CV/Bewerbung.pdf" download="Bewerbung.pdf">
+        <button type="button">Mein CV</button>
+      </a>
+      <a href="#mehr">
+        <button type="button">Mehr</button>
+      </a>
+    </div>
+
+    <section class="skills-section">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fab fa-html5"></i>
+          <h3>HTML</h3>
+          <div class="progress-bar">
+            <div style="width: 90%; padding: 4px 0">90%</div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <i class="fab fa-css3-alt"></i>
+          <h3>CSS</h3>
+          <div class="progress-bar">
+            <div style="width: 20%; padding: 4px 0">20%</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-js"></i>
+          <h3>JavaScript</h3>
+          <div class="progress-bar">
+            <div style="width: 60%; padding: 4px 0">60%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="language-section">
+      <h2>Sprachen</h2>
+      <div class="language-grid">
+        <div class="lang-card">Deutsch – Fließend</div>
+        <div class="lang-card">Kurdisch – Muttersprache</div>
+        <div class="lang-card">Arabisch – Verhandlungssicher</div>
+        <div class="lang-card">Englisch – Grundkenntnisse</div>
+      </div>
+    </section>
+
+    <section class="kontaktformular" id="contact">
+      <form
+        action="https://formspree.io/f/xrbplvvv"
+        method="POST"
+        data-aos="fade-left"
+        data-aos-duration="1000"
+        target="_blank"
+      >
+        <h1 class="nam" for="name">Kontaktformular</h1>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Dein Name"
+          required
+          aria-required="true"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Deine E-Mail"
+          required
+          aria-required="true"
+        />
+        <textarea
+          name="message"
+          placeholder="Nachricht"
+          required
+          aria-required="true"
+        ></textarea>
+        <button type="submit">Senden</button>
+        <button type="reset">Leeren</button>
+      </form>
+    </section>
+    <br />
+
+    <footer>
+      <section>
+        <a href="https://www.facebook.com/marwan.doghaty/" target="_blank">
+          <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <a href="https://www.instagram.com/marwan_98.x/" target="_blank">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://snapchat.com/t/8XVWRj2z" target="_blank">
+          <i class="fab fa-snapchat"></i> Snapchat
+        </a>
+        <a href="http://linkedin.com/in/marwan-sabah-a49b68340" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <br />
+        <p>&copy; 2025 Marwan Sabah. Alle Rechte vorbehalten.</p>
+      </section>
+    </footer>
+  </body>
+  <script>
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function () {
+      setTimeout(() => {
+        form.reset();
+      }, 100); // kleine Verzögerung, damit der Submit zuerst im neuen Tab passiert
+    });
+  </script>
+</html>

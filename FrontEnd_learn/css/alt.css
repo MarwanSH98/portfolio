@@ -1,0 +1,295 @@
+/*<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">*/
+/* ===== VARIABLEN & BASISSTYLE ===== */
+:root {
+  --primary: #2563eb; /* Modernes Blau */
+  --secondary: #1e40af; /* Dunkleres Blau */
+  --dark: #1e293b; /* Für Texte */
+  --light: #f8fafc; /* Hintergrund */
+  --accent: #f59e0b; /* Akzentfarbe (Orange) */
+  --gray: #94a3b8; /* Grautöne */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--dark);
+  background: var(--light);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* ===== ANIMIERTE HEADER-Navigation ===== */
+.header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.header ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.header a {
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: var(--transition);
+}
+
+.header a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: var(--transition);
+  transform: translateX(-50%);
+}
+
+.header a:hover {
+  color: var(--primary);
+}
+
+.header a:hover::after {
+  width: 80%;
+}
+
+/* ===== HERO-SECTION MIT ANIMATION ===== */
+#home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 4rem;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+}
+
+.welcome {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== PROFILBILD MIT HOVER-EFFEKT ===== */
+.profilbild {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  animation: float 6s ease-in-out infinite;
+}
+
+.profilbild:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* ===== ÜBER MICH - TYPING-EFFEKT ===== */
+#about h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+#about h1::after {
+  content: "|";
+  position: absolute;
+  right: -10px;
+  animation: blink 1s infinite;
+}
+
+#about span {
+  color: var(--primary);
+  position: relative;
+}
+
+#about span::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: underline 2s forwards;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes underline {
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* ===== SKILL-BARS MIT LADEANIMATION ===== */
+.html-skills {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin: 2rem 0;
+}
+
+.html-skills input[type="range"] {
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  margin: 1rem 0;
+  appearance: none;
+  background: var(--gray);
+  overflow: hidden;
+}
+
+.html-skills input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 0;
+  height: 0;
+  box-shadow: -100vw 0 0 100vw var(--primary);
+}
+
+.html-skills label {
+  display: block;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.html-skills span {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ===== KONTAKTFORMULAR - INTERAKTIVE ELEMENTE ===== */
+.kontaktformular {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.kontaktformular input,
+.kontaktformular textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.kontaktformular input:focus,
+.kontaktformular textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.kontaktformular button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.kontaktformular button:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+/* ===== FOOTER - SOCIAL ICONS ===== */
+footer {
+  background: var(--dark);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  margin: 0 1rem;
+  font-size: 1.2rem;
+  transition: var(--transition);
+  display: inline-block;
+}
+
+footer a:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .header ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  section {
+    padding: 1.5rem;
+  }
+}
